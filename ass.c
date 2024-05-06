@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h> // Добавлен заголовочный файл для функции atoi
+#include <stdlib.h> 
 
 void task1(const char *inputFileName, const char *outputFileName) {
     FILE *inputFile = fopen(inputFileName, "r");
@@ -17,16 +17,14 @@ void task1(const char *inputFileName, const char *outputFileName) {
 
     int count[26] = {0};
 
-    // Count characters occurrences in the first word
     for (int i = 0; word1[i] != '\0'; i++) {
         count[word1[i] - 'a']++;
     }
 
-    // Count characters occurrences in the second word and find unique characters
     for (int i = 0; word2[i] != '\0'; i++) {
         if (count[word2[i] - 'a'] == 1) {
             fprintf(outputFile, "%c ", word2[i]);
-            count[word2[i] - 'a'] = -1; // Mark as visited
+            count[word2[i] - 'a'] = -1;
         }
     }
 
@@ -85,7 +83,6 @@ void task3(const char *inputFileName, const char *outputFileName) {
         token = strtok(NULL, " ");
     }
 
-    // Sort the numbers
     for (int i = 0; i < count - 1; i++) {
         for (int j = 0; j < count - i - 1; j++) {
             if (numbers[j] > numbers[j + 1]) {
@@ -96,7 +93,6 @@ void task3(const char *inputFileName, const char *outputFileName) {
         }
     }
 
-    // Write sorted numbers to output file
     for (int i = 0; i < count; i++) {
         fprintf(outputFile, "%d ", numbers[i]);
     }
@@ -115,7 +111,7 @@ void task4(const char *inputFileName, const char *outputFileName) {
     }
 
     int chars[256] = {0};
-    int c; // Изменен тип переменной на целочисленный
+    int c; 
     while ((c = fgetc(inputFile)) != EOF) {
         if (!isspace(c)) {
             if (chars[c] == 0) {
